@@ -13,6 +13,7 @@ jobs:
           path: |
             node_modules
             .next
+            /home/runner/.cache/Cypress
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
   test:
@@ -26,6 +27,7 @@ jobs:
           path: |
             node_modules
             .next
+            /home/runner/.cache/Cypress
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - uses: cypress-io/github-action@v7
         with:
