@@ -109,6 +109,7 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             . "$NVM_DIR/nvm.sh"
             cd next-cda25
+            git pull
             npm install
             npm run build
             pm2 restart next-app
