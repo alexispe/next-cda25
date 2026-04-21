@@ -17,7 +17,7 @@ jobs:
             node_modules
             .next
             /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node2-${{ hashFiles('**/package-lock.json') }}
 
 
   lint:
@@ -30,7 +30,7 @@ jobs:
         with:
           path: |
             node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node2-${{ hashFiles('**/package-lock.json') }}
           fail-on-cache-miss: 'true'
       - uses: actions/setup-node@v6
         with:
