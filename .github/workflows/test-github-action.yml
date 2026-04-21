@@ -1,6 +1,15 @@
 on: push
 
 jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: npm audit --audit-level=high
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +27,6 @@ jobs:
             .next
             /home/runner/.cache/Cypress
           key: ${{ runner.os }}-node2-${{ hashFiles('**/package-lock.json') }}
-
 
   lint:
     runs-on: ubuntu-latest
