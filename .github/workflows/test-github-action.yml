@@ -33,6 +33,8 @@ jobs:
         with:
           path: |
             node_modules
+            .next
+            /home/runner/.cache/Cypress
           key: ${{ runner.os }}-node2-${{ hashFiles('**/package-lock.json') }}
           fail-on-cache-miss: 'true'
       - run: npm run lint
