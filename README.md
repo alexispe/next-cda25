@@ -44,7 +44,7 @@ pm2 restart next-app
 - Créer les branches git (main, develop)
 
 - Le déploiement en production 
-    (celui actuel, ne se déclenche qu'au push d'un tag
+    (celui actuel, ne se déclenche qu'au push d'un tag)
 
 - Le déploiement en recette se fait à chaque push sur develop.
   - Implique la création d'un nouveau dossier sur le serveur (production et recette)
@@ -56,8 +56,16 @@ Recette sur port 3001
   pour créer la pipeline finale
 
 
+5.
+- Suivre le "TP Docker" envoyé sur Discord
+- **En local** : 
+  - Créer un Dockerfile et un compose.prod.yml pour lancer l'application en mode prod
+  - Créer un compose.yml utilisant cette même image pour la lancer en mode dev
+
+  - Supprimer le node_modules, lancer la stack de dev, est-ce que ça marche ?
+  - La stack de dev est lancée, modifiez le code du site, est-ce que le hot reload fonctionne ?
 
 
 
 
-. 
+
