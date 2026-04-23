@@ -1,0 +1,20 @@
+services:
+  traefik:
+    image: traefik:v3.6
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command:
+      - "--entrypoints.web.address=:80"
+      - "--providers.docker=true"
+  whoami:
+    image: traefik/whoami
+    labels:
+      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+  whoami2:
+    image: traefik/whoami
+    labels:
+      - "traefik.http.routers.whoami2.rule=Host(`whoami2.docker.localhost`)"
+      - "traefik.http.routers.whoami2.entrypoints=web"

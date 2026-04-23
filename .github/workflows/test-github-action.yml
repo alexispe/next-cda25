@@ -159,7 +159,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     environment:
       name: production
-      url: http://51.103.222.170
+      url: http://next-cesi-cda25.switzerlandnorth.cloudapp.azure.com
     steps:
       - name: Configuration de la clé SSH
         run: |
