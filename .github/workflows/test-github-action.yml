@@ -123,7 +123,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/next-cda25:${{ steps.tag-selector.outputs.IMAGE_TAG }}
+          tags: ghcr.io/${{ github.repository }}/next:${{ steps.tag-selector.outputs.IMAGE_TAG }}
 
   deploy-recette:
     runs-on: ubuntu-latest
