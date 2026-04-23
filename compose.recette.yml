@@ -1,5 +1,13 @@
 services:
   next:
     image: ghcr.io/alexispe/next-cda25/next:develop
-    ports:
-      - 3000:3000
+    labels:
+      - "traefik.http.routers.next-recette.rule=Host(`51.103.222.170`)"
+      - "traefik.http.routers.next-recette.entrypoints=web"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+    name: proxy

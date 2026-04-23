@@ -1,5 +1,14 @@
 services:
   next:
     image: ghcr.io/alexispe/next-cda25/next:latest
-    ports:
-      - 80:3000
+    labels:
+      - "traefik.http.routers.next-prod.rule=Host(`next-cesi-cda25.switzerlandnorth.cloudapp.azure.com`)"
+      - "traefik.http.routers.next-prod.entrypoints=websecure"
+      - "traefik.http.routers.next-prod.tls.certresolver=acme"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+    name: proxy
