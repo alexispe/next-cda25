@@ -98,6 +98,33 @@ jobs:
           name: cypress-screenshots-${{ matrix.browser }}
           path: cypress/screenshots
 
+  build-and-push-docker:
+    runs-on: ubuntu-latest
+    #needs: [lint, test]
+    if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v6
+      - name: Déduction du tag de l'image
+        id: tag-selector
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/develop" ]; then
+            echo "IMAGE_TAG=recette" >> "$GITHUB_OUTPUT"
+          else
+            echo "IMAGE_TAG=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Connexion au registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build et push de l'image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/next-cda25:${{ steps.tag-selector.outputs.IMAGE_TAG }}
+
   deploy-recette:
     runs-on: ubuntu-latest
     needs: [lint, test]

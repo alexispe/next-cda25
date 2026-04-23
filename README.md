@@ -65,7 +65,23 @@ Recette sur port 3001
   - Supprimer le node_modules, lancer la stack de dev, est-ce que ça marche ?
   - La stack de dev est lancée, modifiez le code du site, est-ce que le hot reload fonctionne ?
 
-
+6. 
+- Ajouter un job `build-and-push-docker`
+- Commenter les anciens jobs de deploy.
+- Ajouter/modifier le job `deploy-recette` pour déployer via l'image docker
+  - Créer un `compose.recette.yml` (port 3000)
+- Idem pour la `deploy-production` mais avec le bon tag (le numéro de version de l'image, correspond au tag git -> voir interpolation docker compose)
+  - Utiliser le `compose.prod.yml` (port 80)
+  - Créer un `Nom DNS` sur Azure pour accéder au site via `http://___.switzerlandnorth.cloudapp.azure.com`
+.  
+.  
+.  
+.  
+.  
+.  
+.  
+.  
+.  
 
 
 
