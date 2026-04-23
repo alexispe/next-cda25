@@ -147,8 +147,7 @@ jobs:
             git fetch --all
             git checkout develop
             git pull origin develop
-            sudo docker compose pull --policy=always
-            sudo docker compose -f compose.recette.yml up -d
+            sudo docker compose -f compose.recette.yml up -d --pull always
           EOF
 
 
@@ -173,7 +172,6 @@ jobs:
             cd production
             git fetch --all --tags
             git checkout ${{ github.ref_name }}
-            sudo docker compose pull --policy=always
-            sudo docker compose -f compose.prod.yml up -d
+            sudo docker compose -f compose.prod.yml up -d --pull always
           EOF
 
